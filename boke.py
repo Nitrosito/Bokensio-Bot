@@ -30,6 +30,7 @@ bot.set_update_listener(listener) #le decimos al bot que utilice como funcion es
 @bot.message_handler(commands=['imagenboke']) # Indicamos que lo siguiente va a controlar el comando 
 def command_getimagen(m): # Definimos una funcion que resuelva lo que necesitemos.
     cid = m.chat.id # Guardamos el ID de la conversacion para poder responder.
+    bot.send_chat_action(cid,'upload_photo')
     commands.getoutput('fswebcam -r 1600x800 --jpeg 90 -d /dev/video0 /home/pi/bokeh.jpg')
     bot.send_photo( cid, open( '/home/pi/bokeh.jpg', 'rb')) # Con la funcion 'send_photo()'
 
